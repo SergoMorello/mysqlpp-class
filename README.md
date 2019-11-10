@@ -1,5 +1,5 @@
 # mysqlpp-class
 this my easy c++ class for mysql++ lib
-+ example
+and example
 
 by SergoMorello
