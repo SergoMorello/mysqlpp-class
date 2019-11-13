@@ -1,5 +1,6 @@
 #include <mysql++.h>
 
+using namespace std;
 using namespace mysqlpp;
 
 mutex mtxDblink;
@@ -8,16 +9,27 @@ class DBLink
 {
 	private:
 		Connection conn;
+        string Host;
+        string Name;
+        string User;
+        string Pass;
         void OutError(string text)
         {
             cerr << text << endl;
         }
 	public:
+        DBLink(string DBHost,string DBName,string DBUser,string DBPass)
+        {
+            Host = DBHost;
+            Name = DBName;
+            User = DBUser;
+            Pass = DBPass;
+        }
 		//Connect
 		int connect()
 		{
 			try {
-				conn.connect(DBName.c_str(), DBHost.c_str(), DBUser.c_str(), DBPass.c_str());
+				conn.connect(Name.c_str(), Host.c_str(), User.c_str(), Pass.c_str());
 			}
 			catch (ConnectionFailed err)
 			{
